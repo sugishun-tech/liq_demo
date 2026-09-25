@@ -1,0 +1,35 @@
+{
+  "script": "1.0.0",
+  "versions": {
+    "script": "1.0.0",
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "threadpoolctl": "3.6.0"
+  },
+  "status": "failed",
+  "target": "Original stored Laya expected score [0,100], NOT psychometric IQ",
+  "settings": {
+    "command": "train",
+    "workdir": "runs/en-10k",
+    "out": null,
+    "models": "all",
+    "threads": 4,
+    "seed": 42,
+    "search_train_limit": 50000,
+    "search_validation_limit": 20000,
+    "components": 256,
+    "epochs": 120,
+    "patience": 12,
+    "batch_size": 256,
+    "min_improvement": 0.01,
+    "accept_weak": false,
+    "allow_partial": false,
+    "diagnose_only": false,
+    "keep_cache": false,
+    "debug": false
+  },
+  "warnings": [],
+  "error": "保存済みDBがありません: /home/shun/develop/liq/text-iq-pages-static/runs/en-10k/dataset.sqlite3。v0.3の作業ディレクトリを指定してください。"
+}

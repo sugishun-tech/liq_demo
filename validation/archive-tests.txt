@@ -1,0 +1,21 @@
+Archive extraction validation, 2026-09-25
+Original archive extracted into /mnt/data/static_zip_check
+
+node --test tests/*.test.mjs
+  ...
+1..65
+# tests 65
+# suites 0
+# pass 65
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 153.701483
+
+python -m pytest -q tests/test_tools.py tests/test_static.py
+.......................................................                  [100%]
+55 passed in 2.82s
+
+python tools/check.py --allow-missing-model
+静的ファイル検査OK: 57,764 bytes; model=missing。ファイルの変更/ビルドは行っていません。

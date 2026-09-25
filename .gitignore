@@ -1,0 +1,8 @@
+.venv/
+.cache/
+__pycache__/
+.pytest_cache/
+node_modules/
+*.pyc
+browser-results/
+# docs/model/ and docs/vendor/ MUST be committed. Do not use Git LFS.

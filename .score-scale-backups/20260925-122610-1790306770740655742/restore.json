@@ -1,0 +1,37 @@
+{
+  "docs": "/home/shun/develop/liq/text-iq-pages-static/docs",
+  "files": [
+    {
+      "path": "src/core.mjs",
+      "existed": true
+    },
+    {
+      "path": "src/runtime.mjs",
+      "existed": true
+    },
+    {
+      "path": "src/worker.mjs",
+      "existed": true
+    },
+    {
+      "path": "src/app.mjs",
+      "existed": true
+    },
+    {
+      "path": "index.html",
+      "existed": true
+    },
+    {
+      "path": "src/normal-score.mjs",
+      "existed": false
+    },
+    {
+      "path": "model/parity.json",
+      "existed": true
+    },
+    {
+      "path": "model/manifest.json",
+      "existed": true
+    }
+  ]
+}

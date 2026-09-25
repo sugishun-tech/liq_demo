@@ -1,0 +1,13 @@
+{
+  "passed": 6,
+  "checks": [
+    "unconfigured UI has no fabricated score; desktop/mobile layout and guide link",
+    "DOM event flow: load/score/heatmap/keyboard details/JSON serialization (test-double Worker)",
+    "grapheme heatmap preserves complete emoji sequence",
+    "user markup rendered as text, without inserting image or running handlers",
+    "error display leaves no stale score",
+    "cancel resets model controls and ignores stale test-double responses"
+  ],
+  "real_http_worker_onnx_executed": false,
+  "note": "DOM-only: source joined locally in about:blank; network/Worker/download are explicit doubles. Browser policy was not changed. Real HTTP/Worker test is separate."
+}

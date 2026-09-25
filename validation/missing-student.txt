@@ -1,0 +1,2 @@
+ERROR: 学習済みmodel.jsonがありません: /nonexistent/student。v0.3のliq trainを先に完了してください。
+laya-iq-distill v0.3 のCPU学習venvを有効にして実行してください。

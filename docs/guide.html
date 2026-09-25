@@ -1,0 +1,19 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>ファイルを置くだけの公開ガイド · TEXT / IQ</title><link rel="stylesheet" href="styles.css"></head><body>
+<header class="topbar"><a class="brand" href="./">TEXT <span>/</span> IQ</a><a href="./">デモへ戻る</a></header>
+<main class="guide"><p class="eyebrow">STATIC FILES / CPU ONLY</p><h1>学習済みモデルを、<br>ファイル一式で公開。</h1>
+<h2>公開するのはこのフォルダーだけ</h2><p>準備済みの <code>docs/</code> にあるHTML、JavaScript、WASM、モデルをGitHub Pagesで静的配信します。独自CI、ビルド、推論サーバーは不要です。</p>
+<pre>Settings → Pages → Source: Deploy from a branch
+Branch: main
+Folder: /docs
+Save</pre>
+<p>ルートに <code>index.html</code> を置く場合は、<code>docs/</code> の中身を <code>.nojekyll</code> も含めて丸ごと公開リポジトリのルートへコピーし、<code>/(root)</code> を選びます。HTML単体ではモデルやWASMが足りません。</p>
+<h2>初回のファイル準備はCPUで</h2><p>公開者が学習時のCPU版venvを有効にし、プロジェクトのルートで次を実行します。引数は実際の学習済み <code>student/</code> に合わせてください。</p>
+<pre>bash prepare.sh ../laya_iq_distill_v3/runs/en-10k/student --threads 4</pre>
+<p>CPU用ONNX依存、同梱ライブラリ、同一E5リビジョンのONNX、Tokenizerデータ、回帰係数を揃えます。公開時のビルドではありません。GPU用依存、フロントエンドのビルド環境、npm installは不要です。配布元への接続とファイル保存の容量は必要です。</p>
+<p>未配置では数値を表示しません。このプロジェクトの作成環境では配布元へ接続できず、実モデルとランタイムは取得できていません。実行・検証状況は配布READMEと検証記録を参照してください。</p>
+<h2>公開前の確認</h2><pre>python3 tools/check.py
+python3 tools/serve.py</pre><p>ブラウザで「モデルを読み込む」を押します。日英の確認例についてトークンID、埋め込み、回帰値を照合し、不一致なら採点を無効にします。これは実装の一致確認であり、採点内容が正しいことの証明ではありません。</p>
+<h2>CPU推論と通信</h2><p>閲覧者のブラウザ内でCPUのWebAssemblyを使います。推論はWeb Workerへ分離しています。入力文章を外部APIへ送りません。JavaScript、WASM、モデルは同じ公開サイトから取得し、実行時の外部CDNに依存しません。初回のモデル取得とRAM使用には余裕が必要です。</p>
+<h2>ヒートマップ</h2><p>語または文字を1区間ずつ空白へ置き換え、元の点数との差を可視化します。橙色は元の値を上げる方向、青色は下げる方向です。各差分を足しても元の点数にはなりません。CPUで推論を繰り返すので、文字単位では計算が増えます。</p>
+<p>文章の代理スコアであり、人間のIQ・文章の正しさ・教師の思考過程を測るものではありません。英語で学習したモデルの日本語精度も保証しません。</p>
+<p><a href="THIRD_PARTY_NOTICES.txt">第三者ライセンス通知</a></p></main><footer><span>Text complexity proxy. Not a person's IQ.</span><a href="./">デモへ戻る</a></footer></body></html>

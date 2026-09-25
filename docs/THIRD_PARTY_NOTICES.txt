@@ -1,0 +1,22 @@
+TEXT / IQ static demo: third-party notices
+
+Application source: MIT; see licenses/APP-MIT.txt.
+
+Prepared browser runtimes (not yet included in the unprepared source ZIP):
+- @huggingface/tokenizers 0.2.0: Apache-2.0; vendor/tokenizers/LICENSE.
+  Source: https://github.com/huggingface/tokenizers.js
+- ONNX Runtime Web 1.22.0, WASM-only build: MIT; vendor/onnxruntime/LICENSE.
+  Source: https://github.com/microsoft/onnxruntime
+
+The preparation tool retrieves only named CPU browser files and their licenses.
+It records version-pinned source URLs and file hashes in vendor-lock.json.
+The public application loads only local, same-site files. Source URLs in the
+lock are provenance metadata, not runtime endpoints.
+
+Encoder model: intfloat/multilingual-e5-small, MIT; licenses/E5-MIT.txt.
+The exported manifest records the actual fixed revision used by the trained
+student. The application license does not replace the model license.
+
+Sentiment140 training text is not distributed with this site.
+Labels, model quality and rights to training material are the publisher's
+responsibility. This software does not validate human intelligence.

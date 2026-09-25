@@ -1,0 +1,400 @@
+TAP version 13
+# Subtest: SHA256 implementation
+ok 1 - SHA256 implementation
+  ---
+  duration_ms: 10.713261
+  type: 'test'
+  ...
+# Subtest: Fetch validates bytes and checksum
+ok 2 - Fetch validates bytes and checksum
+  ---
+  duration_ms: 26.760124
+  type: 'test'
+  ...
+# Subtest: Corrupt downloaded bytes are rejected
+ok 3 - Corrupt downloaded bytes are rejected
+  ---
+  duration_ms: 1.790603
+  type: 'test'
+  ...
+# Subtest: Corrupt cache is evicted and refetched once
+ok 4 - Corrupt cache is evicted and refetched once
+  ---
+  duration_ms: 2.517935
+  type: 'test'
+  ...
+# Subtest: Truncated or oversized responses do not produce a model
+ok 5 - Truncated or oversized responses do not produce a model
+  ---
+  duration_ms: 1.123913
+  type: 'test'
+  ...
+# Subtest: Unavailable browser cache is not required for inference
+ok 6 - Unavailable browser cache is not required for inference
+  ---
+  duration_ms: 2.754369
+  type: 'test'
+  ...
+# Subtest: Wrong-size cached data is refetched: 1
+ok 7 - Wrong-size cached data is refetched: 1
+  ---
+  duration_ms: 2.116481
+  type: 'test'
+  ...
+# Subtest: Wrong-size cached data is refetched: 5
+ok 8 - Wrong-size cached data is refetched: 5
+  ---
+  duration_ms: 7.874032
+  type: 'test'
+  ...
+# Subtest: Cache lookup denied by browser does not prevent download
+ok 9 - Cache lookup denied by browser does not prevent download
+  ---
+  duration_ms: 1.974028
+  type: 'test'
+  ...
+# Subtest: Encoded Content-Length is not mistaken for decompressed size
+ok 10 - Encoded Content-Length is not mistaken for decompressed size
+  ---
+  duration_ms: 1.137776
+  type: 'test'
+  ...
+# Subtest: NFC and Python whitespace normalization
+ok 11 - NFC and Python whitespace normalization
+  ---
+  duration_ms: 2.654823
+  type: 'test'
+  ...
+# Subtest: Empty and oversized input fail explicitly
+ok 12 - Empty and oversized input fail explicitly
+  ---
+  duration_ms: 0.54305
+  type: 'test'
+  ...
+# Subtest: Reject path "../secrets"
+ok 13 - Reject path "../secrets"
+  ---
+  duration_ms: 0.244671
+  type: 'test'
+  ...
+# Subtest: Reject path "/model.bin"
+ok 14 - Reject path "/model.bin"
+  ---
+  duration_ms: 0.141546
+  type: 'test'
+  ...
+# Subtest: Reject path "https://bad/file"
+ok 15 - Reject path "https://bad/file"
+  ---
+  duration_ms: 0.116745
+  type: 'test'
+  ...
+# Subtest: Reject path "a\\\\b"
+ok 16 - Reject path "a\\\\b"
+  ---
+  duration_ms: 0.16585
+  type: 'test'
+  ...
+# Subtest: Reject path "a//b"
+ok 17 - Reject path "a//b"
+  ---
+  duration_ms: 0.108222
+  type: 'test'
+  ...
+# Subtest: Reject path "a/./b"
+ok 18 - Reject path "a/./b"
+  ---
+  duration_ms: 0.182663
+  type: 'test'
+  ...
+# Subtest: Reject path "a/%2e%2e/b"
+ok 19 - Reject path "a/%2e%2e/b"
+  ---
+  duration_ms: 0.326167
+  type: 'test'
+  ...
+# Subtest: Reject path ""
+ok 20 - Reject path ""
+  ---
+  duration_ms: 0.545909
+  type: 'test'
+  ...
+# Subtest: Valid artifact paths
+ok 21 - Valid artifact paths
+  ---
+  duration_ms: 0.196794
+  type: 'test'
+  ...
+# Subtest: Accept matching ready manifest
+ok 22 - Accept matching ready manifest
+  ---
+  duration_ms: 0.725883
+  type: 'test'
+  ...
+# Subtest: Manifest rejects missing
+ok 23 - Manifest rejects missing
+  ---
+  duration_ms: 0.193149
+  type: 'test'
+  ...
+# Subtest: Manifest rejects wrong format
+ok 24 - Manifest rejects wrong format
+  ---
+  duration_ms: 0.169082
+  type: 'test'
+  ...
+# Subtest: Manifest rejects nonfinite
+ok 25 - Manifest rejects nonfinite
+  ---
+  duration_ms: 0.144864
+  type: 'test'
+  ...
+# Subtest: Manifest rejects dimension
+ok 26 - Manifest rejects dimension
+  ---
+  duration_ms: 0.121777
+  type: 'test'
+  ...
+# Subtest: Manifest rejects normalization
+ok 27 - Manifest rejects normalization
+  ---
+  duration_ms: 0.130184
+  type: 'test'
+  ...
+# Subtest: Manifest rejects prefix
+ok 28 - Manifest rejects prefix
+  ---
+  duration_ms: 0.124387
+  type: 'test'
+  ...
+# Subtest: Manifest rejects moving id
+ok 29 - Manifest rejects moving id
+  ---
+  duration_ms: 0.115795
+  type: 'test'
+  ...
+# Subtest: Manifest rejects weights
+ok 30 - Manifest rejects weights
+  ---
+  duration_ms: 0.954516
+  type: 'test'
+  ...
+# Subtest: Manifest rejects clip
+ok 31 - Manifest rejects clip
+  ---
+  duration_ms: 0.248735
+  type: 'test'
+  ...
+# Subtest: Manifest rejects token limit
+ok 32 - Manifest rejects token limit
+  ---
+  duration_ms: 0.142168
+  type: 'test'
+  ...
+# Subtest: Manifest rejects chunk sum
+ok 33 - Manifest rejects chunk sum
+  ---
+  duration_ms: 0.160185
+  type: 'test'
+  ...
+# Subtest: Manifest rejects checksum
+ok 34 - Manifest rejects checksum
+  ---
+  duration_ms: 0.182587
+  type: 'test'
+  ...
+# Subtest: Manifest rejects unverified
+ok 35 - Manifest rejects unverified
+  ---
+  duration_ms: 0.358851
+  type: 'test'
+  ...
+# Subtest: Manifest rejects loose tolerance
+ok 36 - Manifest rejects loose tolerance
+  ---
+  duration_ms: 0.190504
+  type: 'test'
+  ...
+# Subtest: Manifest rejects quantization mismatch
+ok 37 - Manifest rejects quantization mismatch
+  ---
+  duration_ms: 0.129855
+  type: 'test'
+  ...
+# Subtest: Manifest rejects tokenizer missing
+ok 38 - Manifest rejects tokenizer missing
+  ---
+  duration_ms: 0.573064
+  type: 'test'
+  ...
+# Subtest: Manifest rejects invalid graph
+ok 39 - Manifest rejects invalid graph
+  ---
+  duration_ms: 0.175821
+  type: 'test'
+  ...
+# Subtest: Linear projection and IQ transform
+ok 40 - Linear projection and IQ transform
+  ---
+  duration_ms: 0.394802
+  type: 'test'
+  ...
+# Subtest: Clipping preserves the unbounded score
+ok 41 - Clipping preserves the unbounded score
+  ---
+  duration_ms: 0.403493
+  type: 'test'
+  ...
+# Subtest: Vector shape/nonfinite/norm checks
+ok 42 - Vector shape/nonfinite/norm checks
+  ---
+  duration_ms: 0.331061
+  type: 'test'
+  ...
+# Subtest: Japanese word segmentation preserves all nonspace spans
+ok 43 - Japanese word segmentation preserves all nonspace spans
+  ---
+  duration_ms: 16.058169
+  type: 'test'
+  ...
+# Subtest: Grapheme mode keeps composed letters and emoji together
+ok 44 - Grapheme mode keeps composed letters and emoji together
+  ---
+  duration_ms: 0.331411
+  type: 'test'
+  ...
+# Subtest: Space occlusion preserves normalized text alignment
+ok 45 - Space occlusion preserves normalized text alignment
+  ---
+  duration_ms: 1.027631
+  type: 'test'
+  ...
+# Subtest: Single fragment may lead to empty variant
+ok 46 - Single fragment may lead to empty variant
+  ---
+  duration_ms: 0.238462
+  type: 'test'
+  ...
+# Subtest: Explain budget fails rather than silently skipping characters
+ok 47 - Explain budget fails rather than silently skipping characters
+  ---
+  duration_ms: 0.356264
+  type: 'test'
+  ...
+# Subtest: Sign of occlusion effect and clipping independence
+ok 48 - Sign of occlusion effect and clipping independence
+  ---
+  duration_ms: 0.143954
+  type: 'test'
+  ...
+# Subtest: Heatmap rejects stale/overlapping offsets
+ok 49 - Heatmap rejects stale/overlapping offsets
+  ---
+  duration_ms: 0.176087
+  type: 'test'
+  ...
+# Subtest: XSS payload remains plain text in segmentation
+ok 50 - XSS payload remains plain text in segmentation
+  ---
+  duration_ms: 0.237859
+  type: 'test'
+  ...
+# Subtest: Signed output
+ok 51 - Signed output
+  ---
+  duration_ms: 0.126816
+  type: 'test'
+  ...
+# Subtest: Tokenizer.encode returns IDs; max length is checked without truncation
+ok 52 - Tokenizer.encode returns IDs; max length is checked without truncation
+  ---
+  duration_ms: 0.389766
+  type: 'test'
+  ...
+# Subtest: Local URLs work under https://account.github.io/repo/
+ok 53 - Local URLs work under https://account.github.io/repo/
+  ---
+  duration_ms: 0.794578
+  type: 'test'
+  ...
+# Subtest: Local URLs work under https://account.github.io/
+ok 54 - Local URLs work under https://account.github.io/
+  ---
+  duration_ms: 0.218387
+  type: 'test'
+  ...
+# Subtest: Reject nonlocal runtime: https://cdn.jsdelivr.net/file.mjs
+ok 55 - Reject nonlocal runtime: https://cdn.jsdelivr.net/file.mjs
+  ---
+  duration_ms: 0.240681
+  type: 'test'
+  ...
+# Subtest: Reject nonlocal runtime: //evil.test/file
+ok 56 - Reject nonlocal runtime: //evil.test/file
+  ---
+  duration_ms: 0.091673
+  type: 'test'
+  ...
+# Subtest: Reject nonlocal runtime: ../vendor/a
+ok 57 - Reject nonlocal runtime: ../vendor/a
+  ---
+  duration_ms: 0.072608
+  type: 'test'
+  ...
+# Subtest: Reject nonlocal runtime: /vendor/a
+ok 58 - Reject nonlocal runtime: /vendor/a
+  ---
+  duration_ms: 0.111536
+  type: 'test'
+  ...
+# Subtest: Reject nonlocal runtime: ./vendor/../x
+ok 59 - Reject nonlocal runtime: ./vendor/../x
+  ---
+  duration_ms: 0.068431
+  type: 'test'
+  ...
+# Subtest: Reject nonlocal runtime: ./vendor/%2e%2e/x
+ok 60 - Reject nonlocal runtime: ./vendor/%2e%2e/x
+  ---
+  duration_ms: 0.063166
+  type: 'test'
+  ...
+# Subtest: Reject nonlocal runtime: ./vendor/a?x=1
+ok 61 - Reject nonlocal runtime: ./vendor/a?x=1
+  ---
+  duration_ms: 0.245766
+  type: 'test'
+  ...
+# Subtest: Reject nonlocal runtime: ./vendor/a\#x
+ok 62 - Reject nonlocal runtime: ./vendor/a\#x
+  ---
+  duration_ms: 0.349439
+  type: 'test'
+  ...
+# Subtest: Reject nonlocal runtime: ./vendor/a\\x
+ok 63 - Reject nonlocal runtime: ./vendor/a\\x
+  ---
+  duration_ms: 1.317024
+  type: 'test'
+  ...
+# Subtest: Token mismatches fail before weights load
+ok 64 - Token mismatches fail before weights load
+  ---
+  duration_ms: 0.790572
+  type: 'test'
+  ...
+# Subtest: The app has no GPU selection and loads only a CPU provider
+ok 65 - The app has no GPU selection and loads only a CPU provider
+  ---
+  duration_ms: 0.477589
+  type: 'test'
+  ...
+1..65
+# tests 65
+# suites 0
+# pass 65
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 124.078627

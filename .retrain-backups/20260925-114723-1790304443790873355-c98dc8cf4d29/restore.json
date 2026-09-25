@@ -1,0 +1,8 @@
+{
+  "files": [
+    "/home/shun/develop/liq/text-iq-pages-static/docs/src/core.mjs",
+    "/home/shun/develop/liq/text-iq-pages-static/docs/model/parity.json",
+    "/home/shun/develop/liq/text-iq-pages-static/docs/model/manifest.json"
+  ],
+  "note": "core.mjs / parity file / manifest.json の旧内容。公開フォルダー外に保存。"
+}

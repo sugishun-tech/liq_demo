@@ -1,0 +1,5 @@
+{
+  "tokenizers": "./vendor/tokenizers/tokenizers.mjs",
+  "onnxruntime": "./vendor/onnxruntime/ort.wasm.min.mjs",
+  "wasm_path": "./vendor/onnxruntime/"
+}

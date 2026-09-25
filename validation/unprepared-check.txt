@@ -1,0 +1,1 @@
+ERROR: 学習済みモデル未配置です。prepare.sh にstudent/を渡してください。

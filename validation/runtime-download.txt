@@ -1,0 +1,2 @@
+取得: tokenizers/tokenizers.mjs
+ERROR: <urlopen error [Errno -3] Temporary failure in name resolution>

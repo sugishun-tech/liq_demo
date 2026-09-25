@@ -1,0 +1,47 @@
+{
+  "format": "text-iq-runtime-v2",
+  "status": "ready",
+  "files": [
+    {
+      "path": "vendor/tokenizers/tokenizers.mjs",
+      "bytes": 98937,
+      "sha256": "1c4a848f86156201c033d6cd08c4cf81ae1088552acec3367f31ef086edf5af0",
+      "source": "https://cdn.jsdelivr.net/npm/@huggingface/tokenizers@0.2.0/dist/tokenizers.mjs"
+    },
+    {
+      "path": "vendor/tokenizers/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "source": "https://cdn.jsdelivr.net/npm/@huggingface/tokenizers@0.2.0/LICENSE"
+    },
+    {
+      "path": "vendor/onnxruntime/ort.wasm.min.mjs",
+      "bytes": 48259,
+      "sha256": "6ef726f355b791129f7ddf3f62e7877a16b9b777abe87004b8ab306e6b9cf265",
+      "source": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.mjs"
+    },
+    {
+      "path": "vendor/onnxruntime/ort-wasm-simd-threaded.mjs",
+      "bytes": 20856,
+      "sha256": "30dd851d9c00622940500f71ddd2ff8820c5cb65270816080175b958705385a8",
+      "source": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort-wasm-simd-threaded.mjs"
+    },
+    {
+      "path": "vendor/onnxruntime/ort-wasm-simd-threaded.wasm",
+      "bytes": 11210254,
+      "sha256": "71aef04959c5c1b6de461b6538e2058e306610034a85aad2742d0c7fd4533fe4",
+      "source": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort-wasm-simd-threaded.wasm"
+    },
+    {
+      "path": "vendor/onnxruntime/LICENSE",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+      "source": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.22.0/LICENSE"
+    }
+  ],
+  "versions": {
+    "@huggingface/tokenizers": "0.2.0",
+    "onnxruntime-web": "1.22.0"
+  },
+  "integrity_note": "SHA-256 recorded from version-pinned HTTPS downloads; not an upstream signature."
+}

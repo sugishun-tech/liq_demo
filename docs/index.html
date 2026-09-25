@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="description" content="文章の複雑性を多言語モデルで採点し、語や文字を除いたときの変化を可視化するブラウザ内実行デモ。人間のIQを測るものではありません。">
+<title>TEXT / IQ · 文章スコアとヒートマップ</title>
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="src/app.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#text">入力へ移動</a>
+<header class="topbar"><a class="brand" href="./" aria-label="TEXT IQ ホーム">TEXT <span>/</span> IQ<span class="version">STATIC 02</span></a><span class="privacy"><span class="dot"></span>ブラウザ内で処理</span></header>
+<main>
+<section class="intro"><p class="eyebrow">MULTILINGUAL TEXT EXPLORER</p><h1>文章の複雑さを、<br class="mobile-break">見える形に。</h1><p class="lead">文章の代理スコアと、語・文字を除いたときの変化を可視化。<br>書き手の知能ではなく、<strong>モデルが文章に付ける点数</strong>を調べる実験です。</p></section>
+<section class="runtime-bar" aria-label="モデルの状態"><div><span id="model-dot" class="status-dot"></span><strong id="model-status">モデルを確認中</strong><p id="model-detail">配置されたモデルの情報を読み込みます。</p></div><div class="runtime-actions"><span class="muted">CPU / WebAssembly</span><button id="load" class="button secondary" disabled>モデルを読み込む</button></div></section>
+<div id="setup" class="notice" hidden><strong>学習済みモデルがまだ配置されていません。</strong><p>v0.3で学習した <code>student/</code> を変換すると、このページで採点できるようになります。未学習の点数やサンプルの推論結果は表示しません。</p><a href="guide.html">配置手順を見る →</a></div>
+<div id="error" class="error" role="alert" hidden></div>
+<div class="workspace">
+<section class="card editor"><div class="section-title"><h2><span>01</span> テキスト</h2><span class="muted">日本語 / English / 多言語</span></div>
+<label for="text" class="sr-only">評価する文章</label>
+<textarea id="text" spellcheck="false" placeholder="評価したい文章を入力してください。">測定値は変わった。しかし、センサーの位置も変わったため、この結果だけでは故障と断定できない。</textarea>
+<div class="editor-meta"><span id="char-count">0文字</span><button id="clear" class="text-button" type="button">クリア</button></div>
+<div class="examples"><span>入力例</span><button class="chip" data-example="ja">日本語</button><button class="chip" data-example="en">English</button><button class="chip" data-example="short">短文</button></div>
+<div class="editor-bottom"><button id="score" class="button primary" disabled>スコアを計算 <span aria-hidden="true">↗</span></button><button id="cancel" class="button quiet" hidden>中止</button><span class="shortcut">Ctrl / ⌘ + Enter</span></div>
+<p class="small-print">入力文章をAPIへ送信しません。初回はこのサイト内の推論ライブラリとモデルを取得します。モデルの読み込みは上のボタンから開始します。</p></section>
+<section class="card result" aria-labelledby="score-title"><div class="section-title"><h2 id="score-title"><span>02</span> 文章IQ <small>代理指標</small></h2></div>
+<div class="score-block"><output id="iq" class="score-number" aria-live="polite">—</output><span class="score-range">順位で再尺度化 70–130</span></div>
+<div class="scale"><div id="scale-fill"></div><span id="scale-marker" hidden></span></div><div class="scale-labels"><span>70</span><span>100</span><span>130</span></div>
+<div class="score-stats"><div><span>元モデルの複雑性</span><strong id="complexity">—<small> / 100</small></strong></div><div><span>モデル入力</span><strong id="tokens">—<small> tokens</small></strong></div></div>
+<p id="score-note" class="result-note">モデルを読み込み、文章を入力して計算してください。</p>
+<p class="disclaimer">この数値は心理検査のIQではありません。基準データ内の予測順位を、中心100・範囲70〜130の切断正規分布へ再尺度化しています。精度改善や、日本語・未知入力の同じ分布は保証しません。</p>
+</section>
+</div>
+<section class="card explanation"><div class="section-title"><h2><span>03</span> 判断への影響を見る</h2><span class="muted">除去による感度分析</span></div>
+<div class="heat-controls"><p>ある部分を空白に置き換えると、スコアはどう変わるか。</p><div><label for="granularity" class="sr-only">ヒートマップの単位</label><select id="granularity"><option value="word">語・記号ごと</option><option value="grapheme">文字ごと（書記素）</option></select><button id="explain" class="button secondary" disabled>ヒートマップを計算</button></div></div>
+<div class="legend"><span><i class="swatch negative"></i> 元の点数を下げる方向</span><span><i class="swatch neutral"></i> 変化が小さい</span><span><i class="swatch positive"></i> 元の点数を上げる方向</span></div>
+<div id="heatmap" class="heatmap placeholder" aria-label="テキストのヒートマップ">スコア計算後に、ヒートマップを実行できます。</div>
+<p id="heat-detail" class="heat-detail" aria-live="polite">語・文字を選ぶと、除去前後の点数を確認できます。</p>
+<details id="influences" hidden><summary>変化が大きかった部分</summary><div id="influence-list"></div></details>
+<div class="explanation-footer"><p>色は<strong>再尺度化後の表示スコア差</strong>。小さな元の差も拡大されます。各区間の差分を足しても元の点数にはなりません。内容の正しさ、教師の思考過程、人物の能力を説明するものではありません。最大128区間です。</p><button id="export" class="text-button" disabled>結果をJSONで保存 ↓</button></div>
+</section>
+<section class="status-panel" aria-live="polite"><span id="progress-text">準備中</span><progress id="progress" max="1" value="0" hidden></progress></section>
+<details class="method"><summary>モデル・処理方法・注意点</summary><div><p>学習済みの <strong>multilingual-e5-small + 学習済み回帰器 + 固定順位変換</strong> を使います。Layaの呼び出しや生成AIによる説明文の作成は行いません。入力はNFC正規化し、連続する空白と改行を1個の空白へまとめます。ヒートマップには正規化後の文章を表示します。</p><p>日英の固定例で、PythonとブラウザのトークンID・埋め込み・回帰値を照合します。これは実装の一致確認であり、モデルの妥当性検証ではありません。英語Sentiment140のみで学習したモデルの日本語出力は、未検証のゼロショット転移です。</p><p>ヒートマップは区間数に応じて推論を繰り返すため、点数だけの計算より重くなります。単語の切れ方はブラウザの言語処理実装に依存します。CPUのWebAssemblyだけで計算します。Web Workerで画面操作から分離しています。</p><pre id="model-info">学習済みモデル未読込</pre></div></details>
+</main>
+<footer><span>TEXT / IQ · Experimental, not psychometric.</span><a href="guide.html">導入・公開ガイド</a></footer>
+<noscript><p class="error">このデモにはJavaScriptが必要です。</p></noscript>
+</body></html>
